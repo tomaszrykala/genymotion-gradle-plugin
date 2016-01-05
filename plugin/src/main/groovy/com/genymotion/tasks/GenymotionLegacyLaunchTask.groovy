@@ -26,7 +26,7 @@ import com.genymotion.tools.Log
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
-class GenymotionLaunchTask extends DefaultTask {
+class GenymotionLegacyLaunchTask extends DefaultTask {
 
     String flavor
 
@@ -38,6 +38,7 @@ class GenymotionLaunchTask extends DefaultTask {
         }
 
         def devices = project.genymotion.getDevices(flavor)
+        devices = devices[0]
 
         if (devices?.size() == 0) {
             return
@@ -47,13 +48,16 @@ class GenymotionLaunchTask extends DefaultTask {
 
         GMTool gmtool = GMTool.newInstance()
         def virtualDevices = gmtool.getAllDevices(project.genymotion.config.verbose, false, false)
-        virtualDevices.each {
-            if (it.state == GenymotionVirtualDevice.STATE_ON) {
-                runningDevices.add(it.name)
-            }
-        }
 
-        def virtualDevicesNames = virtualDevices*.name
+        runningDevices.add(virtualDevices.name)
+
+//        virtualDevices.each {
+//            if (it.state == GenymotionVirtualDevice.STATE_ON) {
+//                runningDevices.add(it.name)
+//            }
+//        }
+
+        def virtualDevicesNames = virtualDevices.name
 
         devices.each() {
             processDevice(it, runningDevices, virtualDevicesNames)

@@ -66,7 +66,11 @@ class GenymotionGradlePlugin implements Plugin<Project> {
             project.genymotion.checkParams()
             project.genymotion.injectTasks()
 
-            project.genymotion.getDevices().each {
+
+            def devices = project.genymotion.getDevices()
+            devices = devices[0 as String]
+
+            devices.each {
                 def task = project.task(TASK_LAUNCH + it.name.capitalize(), type: GenymotionSingleLaunchTask) {
                     description 'Starting task for device ' + it.name
                     group PLUGIN_GROUP

@@ -394,7 +394,7 @@ class GMTool {
             }
         }
 
-        devices
+        [devices[0]]
     }
 
     def getRunningDevices(boolean verbose = false, boolean fill = true, boolean nameOnly = false) {

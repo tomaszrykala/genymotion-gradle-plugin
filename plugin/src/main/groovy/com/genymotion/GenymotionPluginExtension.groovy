@@ -18,11 +18,10 @@
  */
 
 package com.genymotion
-
 import com.genymotion.model.GenymotionConfig
 import com.genymotion.model.VDLaunchDsl
 import com.genymotion.tasks.GenymotionFinishTask
-import com.genymotion.tasks.GenymotionLaunchTask
+import com.genymotion.tasks.GenymotionSingleLaunchTask
 import com.genymotion.tools.AndroidPluginTools
 import com.genymotion.tools.GMTool
 import com.genymotion.tools.GMToolException
@@ -182,7 +181,7 @@ class GenymotionPluginExtension {
             finishName = AndroidPluginTools.getFlavorFinishTask(theTask.name)
         }
 
-        Task launchTask = project.tasks.create(launchName, GenymotionLaunchTask)
+        Task launchTask = project.tasks.create(launchName, GenymotionSingleLaunchTask)
         launchTask.flavor = flavor
         theTask.dependsOn(launchTask)
 

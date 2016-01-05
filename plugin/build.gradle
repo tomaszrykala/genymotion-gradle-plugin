@@ -88,7 +88,8 @@ plugindev {
 
 bintray {
     //Add these values to your ~/.gradle/gradle.properties file
-    user = "$BINTRAY_USER_GENY"
-    key = "$BINTRAY_API_KEY_GENY"
+    // user = "$BINTRAY_USER_GENY"
+    user = "tomaszrykala"
+    // key = "$BINTRAY_API_KEY_GENY"
     pkg.repo = 'Genymotion'
 }

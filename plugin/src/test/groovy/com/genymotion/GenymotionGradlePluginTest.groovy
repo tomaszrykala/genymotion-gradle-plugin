@@ -22,7 +22,7 @@ package com.genymotion
 import com.genymotion.model.GenymotionConfig
 import com.genymotion.model.GenymotionVirtualDevice
 import com.genymotion.tasks.GenymotionFinishTask
-import com.genymotion.tasks.GenymotionLaunchTask
+import com.genymotion.tasks.GenymotionLegacyLaunchTask
 import com.genymotion.tools.GMTool
 import com.genymotion.tools.GMToolException
 import com.genymotion.tools.Log
@@ -54,7 +54,7 @@ class GenymotionGradlePluginTest {
 
     @Test
     public void canAddsTaskToProject() {
-        assert project.tasks.genymotionLaunch instanceof GenymotionLaunchTask
+        assert project.tasks.genymotionLaunch instanceof GenymotionLegacyLaunchTask
         assert project.tasks.genymotionFinish instanceof GenymotionFinishTask
     }
 
